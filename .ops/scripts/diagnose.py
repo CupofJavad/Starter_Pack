@@ -1,10 +1,10 @@
 from __future__ import annotations
 
 import argparse
-from datetime import datetime
-from pathlib import Path
 import subprocess
 import sys
+from datetime import datetime
+from pathlib import Path
 
 LOG_DIR = Path(".ops/logs")
 
@@ -23,7 +23,11 @@ def run_capture(cmd: str) -> tuple[int, str]:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--cmd", required=True, help="Command to reproduce the failure")
-    ap.add_argument("--convo-log", default=None, help="Optional path to a raw conversation log to append to")
+    ap.add_argument(
+        "--convo-log",
+        default=None,
+        help="Optional path to a raw conversation log to append to",
+    )
     args = ap.parse_args()
 
     LOG_DIR.mkdir(parents=True, exist_ok=True)
@@ -48,7 +52,10 @@ def main() -> int:
     print(kb_out.strip())
 
     if args.convo_log:
-        append_cmd = f"{sys.executable} .ops/scripts/convo_append.py {args.convo_log} {failure_path}"
+        append_cmd = (
+            f"{sys.executable} .ops/scripts/convo_append.py "
+            f"{args.convo_log} {failure_path}"
+        )
         a_code, a_out = run_capture(append_cmd)
         print(a_out.strip())
         if a_code != 0:

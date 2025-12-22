@@ -1,6 +1,6 @@
 import platform
-import sys
 import subprocess
+import sys
 
 
 def run(cmd: list[str]) -> str:

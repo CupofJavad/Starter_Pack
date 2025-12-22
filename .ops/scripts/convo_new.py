@@ -1,9 +1,9 @@
 from __future__ import annotations
 
-from datetime import datetime
-from pathlib import Path
 import re
 import sys
+from datetime import datetime
+from pathlib import Path
 
 ROOT = Path(".ops/conversations/raw")
 

@@ -2,7 +2,8 @@ SHELL := /bin/bash
 PY := python3
 
 .PHONY: help bootstrap bootstrap-fresh bootstrap-fresh-yes env-fingerprint diagnose kb-record \
-        convo-new convo-append convo-brief
+        convo-new convo-append convo-brief env-check-local-dev env-check-server-ops \
+        env-check-db-local env-check-db-do
 
 help:
 	@echo "Targets:"
@@ -10,6 +11,10 @@ help:
 	@echo "  bootstrap-fresh           Fresh machine install (interactive) then bootstrap"
 	@echo "  bootstrap-fresh-yes       Fresh machine install (non-interactive) then bootstrap"
 	@echo "  env-fingerprint           Print local tool/runtime fingerprints"
+	@echo "  env-check-local-dev      Check env vars for local development"
+	@echo "  env-check-server-ops     Check env vars for server operations"
+	@echo "  env-check-db-local       Check env vars for local Postgres"
+	@echo "  env-check-db-do          Check env vars for DigitalOcean Postgres"
 	@echo "  diagnose CMD='<cmd>' LOG=<optional_convo_log>  Capture failure evidence + KB entry"
 	@echo "  kb-record LOG=<path>      Record a failure log into Error KB"
 	@echo "  convo-new TITLE='...'     Create a new raw conversation log"
@@ -80,4 +85,16 @@ convo-brief:
 diagnose:
 	@if [ -z "$(CMD)" ]; then echo "Missing CMD='<command to reproduce failure>'"; exit 2; fi
 	@. .venv/bin/activate && python .ops/scripts/diagnose.py --cmd "$(CMD)" $(if $(LOG),--convo-log "$(LOG)",)
+
+env-check-local-dev:
+	@. .venv/bin/activate && python .ops/scripts/check_env.py local-dev
+
+env-check-server-ops:
+	@. .venv/bin/activate && python .ops/scripts/check_env.py server-ops
+
+env-check-db-local:
+	@. .venv/bin/activate && python .ops/scripts/check_env.py db-local
+
+env-check-db-do:
+	@. .venv/bin/activate && python .ops/scripts/check_env.py db-do
 

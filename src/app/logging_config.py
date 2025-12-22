@@ -3,7 +3,20 @@ from __future__ import annotations
 import logging
 import os
 
-REDACT_KEYS = {"HF_TOKEN", "NAMESILO_API_KEY"}
+REDACT_KEYS = {
+    "LUNAVERSE_SSH_PASSWORD",
+    "POSTGRES_PASSWORD",
+    "POSTGRES_SUPERUSER_PASSWORD",
+    "POSTGRES_ALT_PASSWORD",
+    "PGADMIN_MASTER_PASSWORD",
+    "DEFAULT_ADMIN_PASSWORD",
+    "LUNAVERSE_APP_PASSWORD",
+    "HF_TOKEN",
+    "GITHUB_TOKEN",
+    "TASKADE_TOKEN",
+    "NAMESILO_API_KEY",
+    "DO_PG_PASSWORD",
+}
 
 
 class RedactingFilter(logging.Filter):

@@ -33,6 +33,10 @@ Remote:
 External services often used:
 - Hugging Face (HF_TOKEN via env var only)
 - NameSilo (NAMESILO_API_KEY via env var only)
+- GitHub (GITHUB_TOKEN via env var only)
+- Taskade (TASKADE_TOKEN via env var only)
+- DigitalOcean Postgres (DO_PG_* env vars)
+- Lunaverse server (SSH access via env vars)
 
 Secrets policy:
 - Never commit secrets
@@ -130,6 +134,63 @@ REQUEST (NO CODE YET)
 3) List candidate public datasets (geology, hydrology, mining history) + limitations
 4) Propose multiple approaches (rule-based scoring, spatial statistics, ML baseline)
 5) Recommend a prototype scope that can be built in 1–2 sessions
+
+────────────────────────────────────────────────────────────
+Environment & Services
+────────────────────────────────────────────────────────────
+This starter pack supports a wide range of tools and services via environment variables:
+
+**Server Management:**
+- Cockpit (web-based server management)
+- Lunaverse server (SSH access, LAN + Tailscale)
+- pgAdmin (web-based database management)
+
+**Databases:**
+- Local Postgres (development)
+- DigitalOcean Postgres (production)
+
+**API Services:**
+- Hugging Face (HF_TOKEN, HF_SSH_KEY_FINGERPRINT)
+- GitHub (GITHUB_TOKEN)
+- Taskade (TASKADE_TOKEN)
+- NameSilo (NAMESILO_API_KEY, account URLs)
+
+**Configuration:**
+All credentials are provided via environment variables. See:
+- `.env.example` for all available variables
+- `docs/env-vars.md` for detailed documentation
+- `docs/server-access.md` for SSH and server access
+- `docs/db-access.md` for database connection examples
+
+**Validation:**
+Check required environment variables for different modes:
+```bash
+make env-check-local-dev    # Local development
+make env-check-server-ops    # Server operations
+make env-check-db-local      # Local Postgres
+make env-check-db-do         # DigitalOcean Postgres
+```
+
+────────────────────────────────────────────────────────────
+Dependency Sprawl Mitigation
+────────────────────────────────────────────────────────────
+To minimize disk usage and improve performance across projects:
+
+**Python:**
+- Prefer `uv` over `pip` (faster, better caching)
+- `uv` uses a global cache for packages
+- Falls back to `pip` if `uv` is not available
+
+**Node:**
+- Use `pnpm` (global store with deduplication)
+- Avoid `npm` or `yarn` unless necessary
+- `pnpm` significantly reduces `node_modules` size
+
+**Best Practices:**
+- Use the same Python version across projects (see `.python-version`)
+- Share `pnpm` global store across all Node projects
+- Use `uv` cache for faster Python dependency resolution
+- Keep virtual environments project-local (`.venv/`)
 
 ────────────────────────────────────────────────────────────
 Fresh Machine Setup (Final Boss)
