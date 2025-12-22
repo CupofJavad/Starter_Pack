@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+.build/
+dist/
+*.egg-info/
+
+# Node
+node_modules/
+pnpm-lock.yaml
+
+# Secrets
+.env
+.envrc
+
+# Private conversation vault (raw logs may include sensitive details)
+.ops/conversations/raw/
+
+# Diagnostic logs can contain system details
+.ops/logs/
+
+# OS
+.DS_Store
