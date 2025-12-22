@@ -94,41 +94,31 @@ Starter_Pack/
 You do not need to understand all of this on day one.
 The bootstrap and docs will guide you.
 
-⸻
 
 **🧑‍🚀 First-Time User Guide (No GitHub Experience Required)**
 
-Assume this is your first repo ever. No shame. Let’s do it step by step.
+If this is your first repo ever... No shame. Let’s do it step by step.
 
-**Step 1 — Create a GitHub account (if you don’t have one)**
-	1.	Go to https://github.com
-	2.	Click Sign up
-	3.	Follow the instructions (email, password, username)
+**Step 1 — Install Git (the thing that clones repos)**
+*Note: You need a guthub account prior to doing this, so make one if you don't have one already.*
 
-That’s it. You now live here.
-
-⸻
-
-**Step 2 — Install Git (the thing that clones repos)**
-
-macOS
-	1.	Open Terminal (Spotlight → type “Terminal”)
-	2.	Run:
+On your Macbook
+1. Open Terminal (Spotlight → type “Terminal”)
+2. Run:
 
 git --version
 
-
-	3.	If Git is not installed, macOS will prompt you to install it. Click Install.
+3. If Git is not installed, macOS will prompt you to install it. Click Install.
 
 Windows / Linux
 	•	Visit: https://git-scm.com/downloads
 	•	Install using the default options
 
-⸻
-
-**Step 3 — Clone this repo (the big moment 🎉)**
+**Step 2 — Clone this repo (the big moment 🎉)**
 	1.	Open this repo in your browser:
+'''text
 https://github.com/CupofJavad/Starter_Pack
+'''
 	2.	Click the green Code button
 	3.	Make sure HTTPS is selected
 	4.	Click Copy (this copies the URL)
@@ -140,23 +130,19 @@ git clone https://github.com/CupofJavad/Starter_Pack.git
 You just cloned your first repo.
 Take a breath. You’re officially doing developer things now.
 
-⸻
-
-Step 4 — Enter the repo
-
+**Step 3 — Enter the repo**
+'''text
 cd Starter_Pack
-
+'''
 If you run:
 '''text
 ls
 '''
 You should see files like README.md, Makefile, src/, etc.
 
-You’re in.
+You’re in...
 
-⸻
-
-⚙️ One Command Setup (The Bootstrap)
+**⚙️ One Command Setup (The Bootstrap)**
 
 This repo is designed around one command:
 '''text
@@ -179,17 +165,15 @@ source .venv/bin/activate
 '''
 ***You’re officially bootstrapped 🚀***
 
-⸻
-
-***🤖 Using This Repo With Cursor (Highly Recommended)***
+##****🤖 Using This Repo With Cursor (Highly Recommended)****
 
 This repo shines when used with Cursor IDE.
 
 Your very first Cursor message should always be:
-
+'''text
 Read and obey: .cursor/START_HERE.md
 My task: <describe what you want to build>
-
+'''
 That single sentence:
 	•	Forces the agent to load the repo’s “brain”
 	•	Prevents context loss
@@ -198,9 +182,7 @@ That single sentence:
 This is not optional.
 This is how the system works.
 
-⸻
-
-🧠 Built-In Memory (Why This Repo Is Different)
+##**🧠 Built-In Memory (Why This Repo Is Different)**
 
 Most repos forget everything.
 
@@ -214,8 +196,6 @@ If you solve a problem once, you never have to solve it again.
 
 That’s the deal.
 
-⸻
-
 ****👥 Authors & Credits****
 
 **Primary Author / Maintainer**
@@ -225,8 +205,6 @@ Builder of systems, breaker of bad workflows, relentless enemy of repeated mista
 ****AI Co-Author / Assistant****
 ***🤖 ChatGPT***
 An unapologetically nerdy, overly methodical, occasionally funny AI who helped design, refine, and sanity-check this system — and will happily help you use it too.
-
-⸻
 
 ******🧙‍♂️ Final Words******
 
