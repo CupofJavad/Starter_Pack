@@ -4,8 +4,6 @@
 
 > A reusable, opinionated, memory-preserving, AI-friendly starter repository for building small but serious applications — without losing your mind, your context, or your weekends.
 
----
-
 ## 🚀 What Is This Repo?
 
 This repository is a **do-it-once, use-forever project foundation**.
@@ -25,8 +23,8 @@ It gives you:
 - A repo you can confidently say:  
   *“Yes, clone this — it will work.”*
 
-This is not a framework.  
-This is not a demo.  
+This is **not** a framework.  
+This is **no**t a demo.  
 This is **infrastructure for thinking clearly**.
 
 ---
@@ -42,7 +40,7 @@ Practical use cases include (but are not limited to):
 - 🧱 Reusable foundations for many future repos
 - 🧭 Teaching someone *how* to work, not just *what* to code
 
-If you’ve ever said:
+**If you’ve ever said:**
 - “Why is this broken again?”
 - “I swear I solved this already…”
 - “The agent forgot everything.”
@@ -90,19 +88,19 @@ Starter_Pack/
 │
 └── .github/
     └── PULL_REQUEST_TEMPLATE.md
-```text
+```
 
-If you’re new: don’t worry.
+**If you’re new: don’t worry.**
 You do not need to understand all of this on day one.
 The bootstrap and docs will guide you.
 
 ⸻
 
-🧑‍🚀 First-Time User Guide (No GitHub Experience Required)
+**🧑‍🚀 First-Time User Guide (No GitHub Experience Required)**
 
 Assume this is your first repo ever. No shame. Let’s do it step by step.
 
-Step 1 — Create a GitHub account (if you don’t have one)
+**Step 1 — Create a GitHub account (if you don’t have one)**
 	1.	Go to https://github.com
 	2.	Click Sign up
 	3.	Follow the instructions (email, password, username)
@@ -111,7 +109,7 @@ That’s it. You now live here.
 
 ⸻
 
-Step 2 — Install Git (the thing that clones repos)
+**Step 2 — Install Git (the thing that clones repos)**
 
 macOS
 	1.	Open Terminal (Spotlight → type “Terminal”)
@@ -128,7 +126,7 @@ Windows / Linux
 
 ⸻
 
-Step 3 — Clone this repo (the big moment 🎉)
+**Step 3 — Clone this repo (the big moment 🎉)**
 	1.	Open this repo in your browser:
 https://github.com/CupofJavad/Starter_Pack
 	2.	Click the green Code button
@@ -136,9 +134,9 @@ https://github.com/CupofJavad/Starter_Pack
 	4.	Click Copy (this copies the URL)
 
 Now switch back to Terminal and run:
-
+'''text
 git clone https://github.com/CupofJavad/Starter_Pack.git
-
+'''
 You just cloned your first repo.
 Take a breath. You’re officially doing developer things now.
 
@@ -149,9 +147,9 @@ Step 4 — Enter the repo
 cd Starter_Pack
 
 If you run:
-
+'''text
 ls
-
+'''
 You should see files like README.md, Makefile, src/, etc.
 
 You’re in.
@@ -161,9 +159,9 @@ You’re in.
 ⚙️ One Command Setup (The Bootstrap)
 
 This repo is designed around one command:
-
+'''text
 make bootstrap
-
+'''
 What this does:
 	•	Creates a Python virtual environment (.venv)
 	•	Installs all dependencies
@@ -172,18 +170,18 @@ What this does:
 	•	Leaves you in a known-good state
 
 Run it now:
-
+'''text
 make bootstrap
-
+'''
 When it finishes, activate the environment:
-
+'''text
 source .venv/bin/activate
-
-You’re officially bootstrapped 🚀
+'''
+***You’re officially bootstrapped 🚀***
 
 ⸻
 
-🤖 Using This Repo With Cursor (Highly Recommended)
+***🤖 Using This Repo With Cursor (Highly Recommended)***
 
 This repo shines when used with Cursor IDE.
 
@@ -218,21 +216,21 @@ That’s the deal.
 
 ⸻
 
-👥 Authors & Credits
+****👥 Authors & Credits****
 
-Primary Author / Maintainer
-🧠 Javad Khoshnevisan
+**Primary Author / Maintainer**
+***🧠 Javad Khoshnevisan***
 Builder of systems, breaker of bad workflows, relentless enemy of repeated mistakes.
 
-AI Co-Author / Assistant
-🤖 ChatGPT
+****AI Co-Author / Assistant****
+***🤖 ChatGPT***
 An unapologetically nerdy, overly methodical, occasionally funny AI who helped design, refine, and sanity-check this system — and will happily help you use it too.
 
 ⸻
 
-🧙‍♂️ Final Words
+******🧙‍♂️ Final Words******
 
-This repo is not about writing more code.
+This repo is **not** about writing more code.
 
 It’s about:
 	•	Thinking clearly
@@ -244,12 +242,4 @@ If this repo saves you even one “why is this broken again?” moment…
 
 …it has already done its job.
 
-Happy hacking 🧠⚡
-
----
-
-### Why this version will **not** break
-- Every diagram is inside a fenced code block
-- No mixed inline arrows or stray indentation
-- Clean section boundaries
-- GitHub’s renderer will not collapse spacing
+***Happy hacking 🧠⚡***
