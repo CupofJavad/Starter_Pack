@@ -5,106 +5,162 @@ Values are never committed to git; only variable names are referenced in code.
 
 ---
 
+## How to Read This Document
+
+- Each variable notes its **intended environments**:
+  - `(dev)` → primarily development/local use
+  - `(prod)` → primarily production/remote use
+  - `(both)` → applies to both dev and prod
+- Unless otherwise stated, variables are **optional** and default to `None` or a sensible value.
+- Secrets (passwords, tokens, API keys) must **never** be committed to git and are **redacted from logs**.
+
+---
+
 ## Application Configuration
 
-- `APP_ENV`: Application environment (e.g., `dev`, `prod`, `test`)
-- `LOG_LEVEL`: Logging level (e.g., `DEBUG`, `INFO`, `WARNING`, `ERROR`)
+- `APP_ENV` `(both, optional)`:
+  - Application environment (e.g., `dev`, `prod`, `test`)
+  - Defaults to `dev` when unset.
+- `LOG_LEVEL` `(both, optional)`:
+  - Logging level (e.g., `DEBUG`, `INFO`, `WARNING`, `ERROR`)
+  - Defaults to `INFO` when unset.
+- `STRUCTURED_LOGGING` `(prod, optional)`:
+  - When set to `true`, `1`, or `json`, enables JSON-structured logging in `app.logging_config`.
+  - Defaults to human-readable text logs when unset.
 
 ---
 
 ## Server Configuration
 
-- `SERVER_ADMIN_NAME`: Name of the server administrator
-- `SERVER_NAME`: Name or identifier of the server
+- `SERVER_ADMIN_NAME` `(both, optional)`:
+  - Name of the server administrator
+- `SERVER_NAME` `(both, optional)`:
+  - Name or identifier of the server
 
 ---
 
 ## Lunaverse Server Access
 
-- `LUNAVERSE_HOST`: Hostname or IP address of the Lunaverse server
-- `LUNAVERSE_SSH_USER`: SSH username for Lunaverse server access
-- `LUNAVERSE_SSH_PORT`: SSH port (typically 22)
-- `LUNAVERSE_SSH_PASSWORD`: SSH password (optional; prefer SSH key authentication)
-- `LUNAVERSE_SSH_TAILSCALE_HOST`: Tailscale hostname for Lunaverse (if using Tailscale VPN)
+- `LUNAVERSE_HOST` `(prod, optional)`:
+  - Hostname or IP address of the Lunaverse server
+- `LUNAVERSE_SSH_USER` `(prod, optional)`:
+  - SSH username for Lunaverse server access
+- `LUNAVERSE_SSH_PORT` `(prod, optional)`:
+  - SSH port (typically 22)
+- `LUNAVERSE_SSH_PASSWORD` `(prod, secret, optional)`:
+  - SSH password (optional; prefer SSH key authentication)
+- `LUNAVERSE_SSH_TAILSCALE_HOST` `(prod, optional)`:
+  - Tailscale hostname for Lunaverse (if using Tailscale VPN)
 
 ---
 
 ## Cockpit & pgAdmin
 
-- `COCKPIT_URL`: Web URL for Cockpit server management interface
-- `PGADMIN_URL`: Web URL for pgAdmin database management interface
-- `PGADMIN_MASTER_PASSWORD`: Master password for pgAdmin
+- `COCKPIT_URL` `(prod, optional)`:
+  - Web URL for Cockpit server management interface
+- `PGADMIN_URL` `(prod, optional)`:
+  - Web URL for pgAdmin database management interface
+- `PGADMIN_MASTER_PASSWORD` `(prod, secret, optional)`:
+  - Master password for pgAdmin
 
 ---
 
 ## Local Postgres Database
 
-- `POSTGRES_HOST`: Postgres server hostname (e.g., `localhost`)
-- `POSTGRES_PORT`: Postgres server port (typically 5432)
-- `POSTGRES_DB`: Database name
-- `POSTGRES_USER`: Database user for application access
-- `POSTGRES_PASSWORD`: Password for `POSTGRES_USER`
-- `POSTGRES_SUPERUSER`: Postgres superuser name (e.g., `postgres`)
-- `POSTGRES_SUPERUSER_PASSWORD`: Password for superuser
-- `POSTGRES_ALT_USER`: Alternative database user (if needed)
-- `POSTGRES_ALT_PASSWORD`: Password for alternative user
+- `POSTGRES_HOST` `(dev, optional)`:
+  - Postgres server hostname (e.g., `localhost`)
+- `POSTGRES_PORT` `(dev, optional)`:
+  - Postgres server port (typically 5432)
+- `POSTGRES_DB` `(dev, optional)`:
+  - Database name
+- `POSTGRES_USER` `(dev, optional)`:
+  - Database user for application access
+- `POSTGRES_PASSWORD` `(dev, secret, optional)`:
+  - Password for `POSTGRES_USER`
+- `POSTGRES_SUPERUSER` `(dev, optional)`:
+  - Postgres superuser name (e.g., `postgres`)
+- `POSTGRES_SUPERUSER_PASSWORD` `(dev, secret, optional)`:
+  - Password for superuser
+- `POSTGRES_ALT_USER` `(dev, optional)`:
+  - Alternative database user (if needed)
+- `POSTGRES_ALT_PASSWORD` `(dev, secret, optional)`:
+  - Password for alternative user
 
 ---
 
 ## Default Admin Credentials
 
-- `DEFAULT_ADMIN_EMAIL`: Default administrator email address
-- `DEFAULT_ADMIN_PASSWORD`: Default administrator password
-- `DEFAULT_ADMIN_ROLE`: Default administrator role name
+- `DEFAULT_ADMIN_EMAIL` `(prod, optional)`:
+  - Default administrator email address
+- `DEFAULT_ADMIN_PASSWORD` `(prod, secret, optional)`:
+  - Default administrator password
+- `DEFAULT_ADMIN_ROLE` `(prod, optional)`:
+  - Default administrator role name
 
 ---
 
 ## Application User
 
-- `LUNAVERSE_APP_USER`: Application-specific user account name
-- `LUNAVERSE_APP_PASSWORD`: Password for application user
+- `LUNAVERSE_APP_USER` `(prod, optional)`:
+  - Application-specific user account name
+- `LUNAVERSE_APP_PASSWORD` `(prod, secret, optional)`:
+  - Password for application user
 
 ---
 
 ## API Tokens
 
-- `GITHUB_TOKEN`: GitHub personal access token or OAuth token
-- `HF_TOKEN`: Hugging Face API token
-- `HF_SSH_KEY_FINGERPRINT`: SSH key fingerprint for Hugging Face SSH access
+- `GITHUB_TOKEN` `(both, secret, optional)`:
+  - GitHub personal access token or OAuth token
+- `HF_TOKEN` `(both, secret, optional)`:
+  - Hugging Face API token
+- `HF_SSH_KEY_FINGERPRINT` `(both, optional)`:
+  - SSH key fingerprint for Hugging Face SSH access
 
 ---
 
 ## DigitalOcean Postgres
 
-- `DO_PG_HOST`: DigitalOcean Postgres cluster hostname
-- `DO_PG_PORT`: DigitalOcean Postgres port (typically 25060)
-- `DO_PG_USER`: DigitalOcean Postgres username
-- `DO_PG_PASSWORD`: DigitalOcean Postgres password
-- `DO_PG_SSLMODE`: SSL mode (e.g., `require`, `verify-full`)
+- `DO_PG_HOST` `(prod, optional)`:
+  - DigitalOcean Postgres cluster hostname
+- `DO_PG_PORT` `(prod, optional)`:
+  - DigitalOcean Postgres port (typically 25060)
+- `DO_PG_USER` `(prod, optional)`:
+  - DigitalOcean Postgres username
+- `DO_PG_PASSWORD` `(prod, secret, optional)`:
+  - DigitalOcean Postgres password
+- `DO_PG_SSLMODE` `(prod, optional)`:
+  - SSL mode (e.g., `require`, `verify-full`)
 
 ---
 
 ## Taskade
 
-- `TASKADE_TOKEN`: Taskade API token
+- `TASKADE_TOKEN` `(both, secret, optional)`:
+  - Taskade API token
 
 ---
 
 ## NameSilo
 
-- `NAMESILO_API_KEY`: NameSilo API key for domain management
-- `NAMESILO_ACCOUNT_URL`: NameSilo account dashboard URL
-- `NAMESILO_SITE_BUILDER_URL`: NameSilo site builder URL
+- `NAMESILO_API_KEY` `(both, secret, optional)`:
+  - NameSilo API key for domain management
+- `NAMESILO_ACCOUNT_URL` `(both, optional)`:
+  - NameSilo account dashboard URL
+- `NAMESILO_SITE_BUILDER_URL` `(both, optional)`:
+  - NameSilo site builder URL
 
 ---
 
 ## Security Notes
 
-- All password and token values are automatically redacted from logs
+- All password and token values are automatically redacted from logs via `app.logging_config.RedactingFilter`
 - Never commit `.env` files to git
 - Use `.env.example` as a template (with blank/placeholder values)
 - Prefer SSH key authentication over passwords when possible
 - Rotate credentials regularly
+- For production, consider using a dedicated **secrets manager** (e.g., cloud provider service)
+  that injects values via environment variables rather than storing them on disk.
 
 ---
 

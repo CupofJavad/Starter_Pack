@@ -183,6 +183,22 @@ ruff format --check .
 
 All should pass.
 
+### Optional: One-Command Quality Gate
+
+For a quick **industry-standard quality gate** that matches what you would run in CI,
+use the bundled `make` target:
+
+```bash
+make quality
+```
+
+This runs, in order:
+- `ruff check .`
+- `pyright`
+- `pytest tests/ -q`
+
+Use this before commits or releases to ensure the repo is in a healthy state.
+
 ---
 
 ## Step 7: Verify Documentation

@@ -3,13 +3,14 @@ PY := python3
 
 .PHONY: help bootstrap bootstrap-fresh bootstrap-fresh-yes env-fingerprint diagnose kb-record \
         convo-new convo-append convo-brief env-check-local-dev env-check-server-ops \
-        env-check-db-local env-check-db-do
+        env-check-db-local env-check-db-do quality
 
 help:
 	@echo "Targets:"
 	@echo "  bootstrap                 Setup venv, install deps, init ops dirs, run checks"
 	@echo "  bootstrap-fresh           Fresh machine install (interactive) then bootstrap"
 	@echo "  bootstrap-fresh-yes       Fresh machine install (non-interactive) then bootstrap"
+	@echo "  quality                   Run standard quality gate (ruff, pyright, pytest)"
 	@echo "  env-fingerprint           Print local tool/runtime fingerprints"
 	@echo "  env-check-local-dev      Check env vars for local development"
 	@echo "  env-check-server-ops     Check env vars for server operations"
@@ -97,4 +98,9 @@ env-check-db-local:
 
 env-check-db-do:
 	@. .venv/bin/activate && python .ops/scripts/check_env.py db-do
+
+quality:
+	@. .venv/bin/activate && ruff check .
+	@. .venv/bin/activate && pyright
+	@. .venv/bin/activate && pytest tests/ -q
 
