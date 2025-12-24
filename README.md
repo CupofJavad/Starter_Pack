@@ -4,6 +4,29 @@
 
 > A reusable, opinionated, memory-preserving, AI-friendly starter repository for building small but serious applications — without losing your mind, your context, or your weekends.
 
+## ⚡ Quick Start (3 Steps)
+
+1. **Clone & Enter**
+   ```bash
+   git clone https://github.com/CupofJavad/Starter_Pack.git
+   cd Starter_Pack
+   ```
+
+2. **Bootstrap**
+   ```bash
+   make bootstrap
+   source .venv/bin/activate
+   ```
+
+3. **Open in Cursor & Use First Prompt**
+   - Open this folder in Cursor IDE
+   - Copy the prompt from `FIRST_PROMPT.md` and paste it into Cursor chat
+   - Done! 🎉
+
+**Need more detail?** See [SETUP.md](SETUP.md) for the complete guide.
+
+---
+
 ## 🚀 What Is This Repo?
 
 This repository is a **do-it-once, use-forever project foundation**.
@@ -56,6 +79,9 @@ Here’s the high-level map of the repo:
 ```text
 Starter_Pack/
 ├── README.md                  ← You are here
+├── SETUP.md                   ← Detailed setup guide
+├── FIRST_PROMPT.md            ← Copy-paste your first Cursor prompt
+├── .cursorrules                ← Auto-read by Cursor (agent rules)
 ├── Makefile                   ← One-command setup magic
 ├── pyproject.toml              ← Python project + dev tooling
 ├── .env.example               ← Example environment variables
@@ -169,18 +195,23 @@ source .venv/bin/activate
 
 This repo shines when used with Cursor IDE.
 
-Your very first Cursor message should always be:
-'''text
+**The `.cursorrules` file is automatically read by Cursor**, so agents will already have context. However, for your **very first message**, use the prompt from `FIRST_PROMPT.md`:
+
+```text
 Read and obey: .cursor/START_HERE.md
+
+First, verify the environment is set up (run `make bootstrap` if needed), then confirm you've read all mandatory documentation and will follow all protocols in future responses.
+
 My task: <describe what you want to build>
-'''
-That single sentence:
-	•	Forces the agent to load the repo’s “brain”
-	•	Prevents context loss
+```
+
+This ensures:
+	•	The agent loads the repo's complete "brain"
+	•	All documentation is read and understood
+	•	Protocols are acknowledged and will be followed
 	•	Dramatically improves answer quality
 
-This is not optional.
-This is how the system works.
+**See `FIRST_PROMPT.md` for the full recommended prompt.**
 
 ##**🧠 Built-In Memory (Why This Repo Is Different)**
 

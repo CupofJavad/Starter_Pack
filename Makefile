@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 PY := python3
 
-.PHONY: help bootstrap bootstrap-fresh bootstrap-fresh-yes env-fingerprint diagnose kb-record \
+.PHONY: help bootstrap bootstrap-fresh bootstrap-fresh-yes verify-setup env-fingerprint diagnose kb-record \
         convo-new convo-append convo-brief env-check-local-dev env-check-server-ops \
         env-check-db-local env-check-db-do quality
 
@@ -10,6 +10,7 @@ help:
 	@echo "  bootstrap                 Setup venv, install deps, init ops dirs, run checks"
 	@echo "  bootstrap-fresh           Fresh machine install (interactive) then bootstrap"
 	@echo "  bootstrap-fresh-yes       Fresh machine install (non-interactive) then bootstrap"
+	@echo "  verify-setup              Verify that setup is complete (for first-time users)"
 	@echo "  quality                   Run standard quality gate (ruff, pyright, pytest)"
 	@echo "  env-fingerprint           Print local tool/runtime fingerprints"
 	@echo "  env-check-local-dev      Check env vars for local development"
@@ -54,14 +55,19 @@ bootstrap:
 
 	@echo ""
 	@echo "== Bootstrap complete =="
-	@echo "Open Cursor and start your first chat with:"
-	@echo "  Read and obey: .cursor/START_HERE.md"
+	@echo "Next steps:"
+	@echo "1. Activate the environment: source .venv/bin/activate"
+	@echo "2. Verify setup: make verify-setup"
+	@echo "3. Open Cursor and use the prompt from FIRST_PROMPT.md"
 
 bootstrap-fresh:
 	@bash .ops/scripts/bootstrap_fresh.sh
 
 bootstrap-fresh-yes:
 	@YES=1 bash .ops/scripts/bootstrap_fresh.sh
+
+verify-setup:
+	@. .venv/bin/activate && python .ops/scripts/verify_setup.py || (echo "Note: Run 'make bootstrap' first if verification fails" && exit 1)
 
 env-fingerprint:
 	@. .venv/bin/activate && python .ops/scripts/fingerprint_env.py

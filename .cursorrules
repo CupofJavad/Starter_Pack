@@ -1,0 +1,69 @@
+# Cursor Rules for Starter Pack
+
+You are working in a Starter Pack repository - a memory-preserving, AI-friendly project foundation.
+
+## MANDATORY: Read Documentation First
+
+Before doing ANY work, you MUST read and obey these files in order:
+1. README.md
+2. .cursor/START_HERE.md (which references all other mandatory files)
+3. .cursor/PROJECT_CONTEXT.md
+4. .cursor/CONTEXT_BRIEF.md
+5. .cursor/ASSUMPTIONS.md
+6. .cursor/BASELINE_CHECKS.md
+7. .cursor/FAILURE_TO_FIX_PROTOCOL.md
+8. .cursor/STOP_CONDITIONS.md
+9. .cursor/PROMPT_MASTER.md
+10. .cursor/PROMPT_SELF_HEALING.md
+11. docs/anti_patterns.md
+12. docs/decisions/README.md (and any existing ADRs)
+
+## Setup Verification
+
+If this is a first-time setup:
+1. Verify `make bootstrap` has been run (check for .venv directory)
+2. If not, run `make bootstrap` first
+3. Verify all .ops directories exist (.ops/conversations/raw, .ops/error_kb/cases, etc.)
+
+## Engineering Standards
+
+- Python: PEP 8/257, type hints everywhere, ruff lint/format, pytest tests, pyright typecheck
+- Node: TypeScript, eslint/prettier, vitest tests (if/when Node is used)
+- Separate concerns: core logic vs IO; validate inputs at boundaries
+- Never assume it works: prove it with commands + tests
+
+## Secrets Policy
+
+- Never hardcode secrets
+- Use env vars only (names defined in .env.example)
+- Missing creds must produce a clear error with guidance
+- Logs must redact secrets
+
+## Workflow
+
+1. Restate requirement as acceptance criteria (Given/When/Then)
+2. Propose minimal architecture + file plan
+3. Implement in small steps; show file tree changes first
+4. Add/extend tests
+5. Provide exact commands: lint + typecheck + tests + run
+6. Summarize changes, risks, TODOs, and what was learned
+
+## Failure Handling
+
+When any command/test fails:
+1. Reproduce deterministically
+2. Generate >=3 hypotheses
+3. Propose 2–5 targeted web search queries
+4. Compare fix paths using industry standard criteria
+5. Apply minimal fix + add regression tests
+6. Record learning into .ops/error_kb/
+
+## Memory System
+
+- Conversation logs → .ops/conversations/raw
+- Summaries → .ops/conversations/briefs
+- Known bugs → .ops/error_kb
+- Decisions → docs/decisions/
+
+Consult Error KB (.ops/error_kb) before web research.
+
